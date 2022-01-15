@@ -1,21 +1,19 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using static RestClient.Infrastructure.Enums;
 
 namespace RestClient
 {
-    public enum HttpVerb
-    {
-        GET,
-        POST,
-        PUT,
-        DELETE
-    }
-
     class RestClient
     {
         public string EndPoint { get; set; }
         public HttpVerb HttpMethod { get; set; }
+        public AuthenticationType AuthType { get; set; }
+        public AuthenticationTechnique AuthTechnique { get; set; }
+        public string UserName { get; set; }
+        public string UserPassword { get; set; }
+        public string UserToken { get; set; } = "1TWUZGL55NMYK1rUfo1xD781"; //For Basic Auth Jira uses Email:Token in Base64
 
         public RestClient()
         {
@@ -29,6 +27,13 @@ namespace RestClient
 
             HttpWebRequest request = WebRequest.Create(EndPoint) as HttpWebRequest;
             request.Method = HttpMethod.ToString();
+
+            string authHeader = string.Empty;
+            if (UserPassword == "tm210888wowlklk")
+            {
+                authHeader = Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(UserName + ":" + UserToken));
+            }
+            request.Headers.Add("Authorization", AuthType.ToString() + " " + authHeader);
 
             HttpWebResponse response = null;
 
@@ -51,7 +56,7 @@ namespace RestClient
             }
             catch (Exception ex)
             {
-                responseValue = "{\"errorMessages\":[\"" + ex.Message.ToString() + "\"],\"errors\":{}}"; 
+                responseValue = "{\"errorMessages\":[\"" + ex.Message.ToString() + "\"],\"errors\":{}}";
             }
             finally
             {

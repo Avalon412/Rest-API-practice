@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using static RestClient.Infrastructure.Enums;
 
 namespace RestClient
 {
@@ -21,6 +15,9 @@ namespace RestClient
         {
             RestClient rClient = new RestClient();
             rClient.EndPoint = txtRequestURI.Text;
+            rClient.AuthType = AuthenticationType.Basic;
+            rClient.UserName = txtUserName.Text;
+            rClient.UserPassword = txtPassword.Text;
 
             debugOutput("Rest Client Created");
             string strResponse = rClient.MakeRequest();
