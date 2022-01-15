@@ -22,7 +22,24 @@ namespace RestClient
             RestClient rClient = new RestClient();
             rClient.EndPoint = txtRequestURI.Text;
 
-            txtResponse.Text = rClient.MakeRequest();
+            debugOutput("Rest Client Created");
+            string strResponse = rClient.MakeRequest();
+            debugOutput(strResponse);
+        }
+
+        private void debugOutput(string strDebugText)
+        {
+            try
+            {
+                System.Diagnostics.Debug.Write(strDebugText + Environment.NewLine);
+                txtResponse.Text = txtResponse.Text + strDebugText + Environment.NewLine;
+                txtResponse.SelectionStart = txtResponse.TextLength;
+                txtResponse.ScrollToCaret();
+            }
+            catch(Exception ex)
+            {
+                System.Diagnostics.Debug.Write(ex.Message, ToString() + Environment.NewLine);
+            }
         }
     }
 }
