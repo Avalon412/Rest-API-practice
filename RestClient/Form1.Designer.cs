@@ -48,7 +48,6 @@ namespace RestClient
             this.txtResponse.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtResponse.Enabled = false;
             this.txtResponse.Location = new System.Drawing.Point(105, 38);
             this.txtResponse.Multiline = true;
             this.txtResponse.Name = "txtResponse";
