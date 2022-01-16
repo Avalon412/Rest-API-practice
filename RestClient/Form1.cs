@@ -24,6 +24,7 @@ namespace RestClient
             debugOutput(strResponse);
         }
 
+        #region Debug functions
         private void debugOutput(string strDebugText)
         {
             try
@@ -38,5 +39,6 @@ namespace RestClient
                 System.Diagnostics.Debug.Write(ex.Message, ToString() + Environment.NewLine);
             }
         }
+        #endregion
     }
 }

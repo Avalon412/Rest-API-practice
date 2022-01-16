@@ -32,8 +32,8 @@ namespace RestClient
             if (UserPassword == "tm210888wowlklk")
             {
                 authHeader = Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(UserName + ":" + UserToken));
+                request.Headers.Add("Authorization", AuthType.ToString() + " " + authHeader);
             }
-            request.Headers.Add("Authorization", AuthType.ToString() + " " + authHeader);
 
             HttpWebResponse response = null;
 
