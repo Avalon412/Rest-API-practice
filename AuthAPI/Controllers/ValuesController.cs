@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace AuthAPI.Controllers
 {
-    [Authorize(Users = "WIN-1C44R4M3HMO\\Avalon")]
+    [Authorize(Users = "WIN-1C44R4M3HMO\\User")]
     public class ValuesController : ApiController
     {
         // GET api/values
