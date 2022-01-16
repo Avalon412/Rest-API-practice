@@ -37,13 +37,13 @@ namespace RestClient
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.rdoBasicAuth = new System.Windows.Forms.RadioButton();
             this.rdoNTLM = new System.Windows.Forms.RadioButton();
+            this.rdoBasicAuth = new System.Windows.Forms.RadioButton();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rdoRollYourOwn = new System.Windows.Forms.RadioButton();
             this.rdoNetCredClass = new System.Windows.Forms.RadioButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -54,6 +54,7 @@ namespace RestClient
             this.txtRequestURI.Name = "txtRequestURI";
             this.txtRequestURI.Size = new System.Drawing.Size(414, 20);
             this.txtRequestURI.TabIndex = 0;
+            this.txtRequestURI.Text = "https://restapitutorial.atlassian.net/rest/api/2/issue/RES-1";
             // 
             // txtResponse
             // 
@@ -114,6 +115,7 @@ namespace RestClient
             // 
             this.groupBox1.Controls.Add(this.rdoNTLM);
             this.groupBox1.Controls.Add(this.rdoBasicAuth);
+            this.groupBox1.Enabled = false;
             this.groupBox1.Location = new System.Drawing.Point(105, 64);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(219, 71);
@@ -121,34 +123,16 @@ namespace RestClient
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Auth Type";
             // 
-            // groupBox2
+            // rdoNTLM
             // 
-            this.groupBox2.Controls.Add(this.rdoRollYourOwn);
-            this.groupBox2.Controls.Add(this.rdoNetCredClass);
-            this.groupBox2.Location = new System.Drawing.Point(361, 64);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(234, 71);
-            this.groupBox2.TabIndex = 8;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Auth Technique";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(358, 41);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Password";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(102, 41);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "User Name:";
+            this.rdoNTLM.AutoSize = true;
+            this.rdoNTLM.Location = new System.Drawing.Point(7, 43);
+            this.rdoNTLM.Name = "rdoNTLM";
+            this.rdoNTLM.Size = new System.Drawing.Size(108, 17);
+            this.rdoNTLM.TabIndex = 1;
+            this.rdoNTLM.TabStop = true;
+            this.rdoNTLM.Text = "NTLM (Windows)";
+            this.rdoNTLM.UseVisualStyleBackColor = true;
             // 
             // rdoBasicAuth
             // 
@@ -162,16 +146,16 @@ namespace RestClient
             this.rdoBasicAuth.Text = "Basic Authentication";
             this.rdoBasicAuth.UseVisualStyleBackColor = true;
             // 
-            // rdoNTLM
+            // groupBox2
             // 
-            this.rdoNTLM.AutoSize = true;
-            this.rdoNTLM.Location = new System.Drawing.Point(7, 43);
-            this.rdoNTLM.Name = "rdoNTLM";
-            this.rdoNTLM.Size = new System.Drawing.Size(108, 17);
-            this.rdoNTLM.TabIndex = 1;
-            this.rdoNTLM.TabStop = true;
-            this.rdoNTLM.Text = "NTLM (Windows)";
-            this.rdoNTLM.UseVisualStyleBackColor = true;
+            this.groupBox2.Controls.Add(this.rdoRollYourOwn);
+            this.groupBox2.Controls.Add(this.rdoNetCredClass);
+            this.groupBox2.Location = new System.Drawing.Point(361, 64);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(234, 71);
+            this.groupBox2.TabIndex = 8;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Auth Technique";
             // 
             // rdoRollYourOwn
             // 
@@ -195,6 +179,24 @@ namespace RestClient
             this.rdoNetCredClass.TabStop = true;
             this.rdoNetCredClass.Text = "NetworkCredentials Class";
             this.rdoNetCredClass.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(358, 41);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Password";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(102, 41);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(63, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "User Name:";
             // 
             // Form1
             // 

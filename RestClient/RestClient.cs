@@ -31,8 +31,16 @@ namespace RestClient
             string authHeader = string.Empty;
             if (UserPassword == "tm210888wowlklk")
             {
-                authHeader = Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(UserName + ":" + UserToken));
-                request.Headers.Add("Authorization", AuthType.ToString() + " " + authHeader);
+                if (AuthTechnique == AuthenticationTechnique.RollYourOwn)
+                {
+                    authHeader = Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(UserName + ":" + UserToken));
+                    request.Headers.Add("Authorization", AuthType.ToString() + " " + authHeader);
+                }
+                else
+                {
+                    NetworkCredential netCred = new NetworkCredential(UserName, UserPassword);
+                    request.Credentials = netCred;
+                }
             }
 
             HttpWebResponse response = null;
