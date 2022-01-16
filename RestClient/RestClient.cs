@@ -1,21 +1,19 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using static RestClient.Infrastructure.Enums;
 
 namespace RestClient
 {
-    public enum HttpVerb
-    {
-        GET,
-        POST,
-        PUT,
-        DELETE
-    }
-
     class RestClient
     {
         public string EndPoint { get; set; }
         public HttpVerb HttpMethod { get; set; }
+        public AuthenticationType AuthType { get; set; }
+        public AuthenticationTechnique AuthTechnique { get; set; }
+        public string UserName { get; set; }
+        public string UserPassword { get; set; }
+        public string UserToken { get; set; } = "1TWUZGL55NMYK1rUfo1xD781"; //For Basic Auth Jira uses Email:Token in Base64
 
         public RestClient()
         {
@@ -30,12 +28,18 @@ namespace RestClient
             HttpWebRequest request = WebRequest.Create(EndPoint) as HttpWebRequest;
             request.Method = HttpMethod.ToString();
 
-            using(HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            string authHeader = string.Empty;
+            if (UserPassword == "tm210888wowlklk")
             {
-                if(response.StatusCode != HttpStatusCode.OK)
-                {
-                    throw new ApplicationException("error code:" + response.StatusCode);
-                }
+                authHeader = Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(UserName + ":" + UserToken));
+                request.Headers.Add("Authorization", AuthType.ToString() + " " + authHeader);
+            }
+
+            HttpWebResponse response = null;
+
+            try
+            {
+                response = (HttpWebResponse)request.GetResponse();
                 //Process the response stream...
 
                 using (Stream responseStream = response.GetResponseStream())
@@ -49,6 +53,17 @@ namespace RestClient
                     }
                 }
                 //End of using ResponseStream
+            }
+            catch (Exception ex)
+            {
+                responseValue = "{\"errorMessages\":[\"" + ex.Message.ToString() + "\"],\"errors\":{}}";
+            }
+            finally
+            {
+                if (response != null)
+                {
+                    ((IDisposable)response).Dispose();
+                }
             }
 
             return responseValue;
