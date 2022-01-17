@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestClient", "RestClient\Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthAPI", "AuthAPI\AuthAPI.csproj", "{5BE70BA4-F0CB-4E0A-B2CA-EAFE28A9E6AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSONParser", "JSONParser\JSONParser.csproj", "{BA501B1C-9BF7-4490-BD78-35AF62A306AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5BE70BA4-F0CB-4E0A-B2CA-EAFE28A9E6AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BE70BA4-F0CB-4E0A-B2CA-EAFE28A9E6AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BE70BA4-F0CB-4E0A-B2CA-EAFE28A9E6AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA501B1C-9BF7-4490-BD78-35AF62A306AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA501B1C-9BF7-4490-BD78-35AF62A306AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA501B1C-9BF7-4490-BD78-35AF62A306AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA501B1C-9BF7-4490-BD78-35AF62A306AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
